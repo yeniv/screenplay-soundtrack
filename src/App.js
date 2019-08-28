@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import Header from "./components/header.js"
 import Search from "./components/search.js"
 import Playlist from "./components/playlist.js"
+import Footer from "./components/footer.js"
 
 import './App.css'
 
@@ -30,18 +31,14 @@ class App extends Component {
     return (
       <div className="container">
         <div className="app">
-          <Header
-            title="Twitter Playlist"
-            description="Enter a Twitter handle to create a playlist." />
-
+          <Header />
           <Search
             value={this.state.searchInput}
             handleSearchChange={this.handleSearchChange}
             handleSearchSubmit={this.handleSearchSubmit} />
-
           <Playlist
-            value={ this.state.playlistValue} />
-
+            value={this.state.playlistValue} />
+          <Footer />
         </div>
       </div>
     )

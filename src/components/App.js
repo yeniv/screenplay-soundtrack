@@ -1,9 +1,9 @@
 import React, { Component } from "react"
 
-import Header from "./components/header.js"
-import Search from "./components/search.js"
-import Playlist from "./components/playlist.js"
-import Footer from "./components/footer.js"
+import Header from "./header.js"
+import Search from "./search.js"
+import Playlist from "./playlist.js"
+import Footer from "./footer.js"
 
 import nlp from 'compromise';
 

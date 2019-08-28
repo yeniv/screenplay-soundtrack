@@ -7,7 +7,6 @@ import Footer from "./footer.js"
 
 import nlp from 'compromise';
 
-// split all CSS into individual files at the end
 import './App.css'
 
 class App extends Component {

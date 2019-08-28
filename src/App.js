@@ -1,44 +1,51 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react"
+import Header from "./components/header.js"
+import Search from "./components/search.js"
+import Playlist from "./components/playlist.js"
 
-class Header extends Component {
-  render() {
-    return (
-      <div className='header'>
-        <h1>{ this.props.title }</h1>
-        <h3>{ this.props.description }</h3>
-      </div>
-    );
-  }
-}
-
-class Search extends Component {
-  render() {
-    return (
-      <div className='search'>
-        <h4>@</h4>
-
-      </div>
-    );
-  }
-}
-
+import './App.css'
 
 class App extends Component {
   constructor(props) {
     super(props)
+    this.handleSearchChange = this.handleSearchChange.bind(this)
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
     this.state = {
-      search_input: ''
+      searchInput: "",
+      // playlistValue is only for testing the components are working as expected
+      playlistValue: ""
     }
+  }
+
+  handleSearchChange(input) {
+    this.setState({searchInput: input})
+  }
+
+  handleSearchSubmit() {
+    const searchInput = this.state.searchInput
+    this.setState({playlistValue: searchInput})
   }
 
   render() {
     return (
-      <Header
-        title="Twitter Playlist"
-        description="Enter a Twitter handle to create a playlist." />
+      <div className="container">
+        <div className="app">
+          <Header
+            title="Twitter Playlist"
+            description="Enter a Twitter handle to create a playlist." />
+
+          <Search
+            value={this.state.searchInput}
+            handleSearchChange={this.handleSearchChange}
+            handleSearchSubmit={this.handleSearchSubmit} />
+
+          <Playlist
+            value={ this.state.playlistValue} />
+
+        </div>
+      </div>
     )
   }
 }
 
-export default App;
+export default App

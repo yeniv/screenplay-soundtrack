@@ -27,6 +27,7 @@ class App extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
     this.getNouns = this.getNouns.bind(this)
+    this.spotifySearch = this.spotifySearch.bind(this)
     this.state = {
       token: null,
       searchInput: "",
@@ -43,8 +44,30 @@ class App extends Component {
     }
   }
 
+  spotifySearch(searchTerms) {
+    const baseURL = "https://api.spotify.com/v1/search"
+    const searchQuery = searchTerms
+    const type = "track"
+    const limit = "1"
+    const spotifyGetRequest = `${baseURL}?q=${searchQuery}&type=${type}&limit=${limit}`
+
+    fetch(spotifyGetRequest, {
+      method: "GET",
+      headers: {
+        'Authorization': "Bearer " + this.state.token
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
   getNouns(string) {
-    return nlp(string).nouns().out('array')
+    return nlp(string).nouns().out("array")
   }
 
   handleSearchChange(input) {
@@ -53,7 +76,7 @@ class App extends Component {
 
   handleSearchSubmit() {
     const searchInput = this.state.searchInput
-    this.setState({playlistValue: searchInput})
+    this.spotifySearch(searchInput)
     this.setState({searchInputNouns: this.getNouns(this.state.searchInput)})
   }
 

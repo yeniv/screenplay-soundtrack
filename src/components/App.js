@@ -5,6 +5,7 @@ import Search from "./search.js"
 import Playlist from "./playlist.js"
 import Footer from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
+import longestWord from "./longestWord.js"
 
 import nlp from 'compromise';
 
@@ -26,12 +27,11 @@ class App extends Component {
     super(props)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
-    this.getNouns = this.getNouns.bind(this)
+    this.getTopics = this.getTopics.bind(this)
     this.spotifySearch = this.spotifySearch.bind(this)
     this.state = {
       token: null,
       searchInput: "",
-      searchInputNouns: "",
       // playlistValue is only for testing the components are working as expected
       playlistValue: ""
     }
@@ -45,13 +45,13 @@ class App extends Component {
   }
 
   spotifySearch(searchTerms) {
-    const baseURL = "https://api.spotify.com/v1/search"
-    const searchQuery = searchTerms
-    const type = "track"
-    const limit = "1"
-    const spotifyGetRequest = `${baseURL}?q=${searchQuery}&type=${type}&limit=${limit}`
+    const baseURL     = "https://api.spotify.com/v1/search"
+    const searchQuery = searchTerms.join(" ")
+    const type        = "track"
+    const limit       = "1"
+    const getRequest  = `${baseURL}?q=${searchQuery}&type=${type}&limit=${limit}`
 
-    fetch(spotifyGetRequest, {
+    fetch(getRequest, {
       method: "GET",
       headers: {
         'Authorization': "Bearer " + this.state.token
@@ -66,7 +66,7 @@ class App extends Component {
     });
   }
 
-  getNouns(string) {
+  getTopics(string) {
     return nlp(string).nouns().out("array")
   }
 
@@ -75,9 +75,14 @@ class App extends Component {
   }
 
   handleSearchSubmit() {
-    const searchInput = this.state.searchInput
-    this.spotifySearch(searchInput)
-    this.setState({searchInputNouns: this.getNouns(this.state.searchInput)})
+    const topics = this.getTopics(this.state.searchInput)
+    if (topics.length === 0) {
+      // return longestWord(this.state.searchInput)
+      console.log(`longest word: ${longestWord(this.state.searchInput)}`)
+    } else {
+    // return topics
+    console.log(`topics: ${topics}`)
+    }
   }
 
   render() {

@@ -1,5 +1,5 @@
-export const longestWord = (tweet) => {
-  const stripPunctuation = tweet.replace(/[.,\/#!$%\^&\*;:{}=\-_`'"~()]/g,"")
+const longestWord = (tweet) => {
+  const stripPunctuation = tweet.replace(/[.,/#!$%^&*;:{}=\-_`'"~()]/g,"")
   const words = stripPunctuation.split(" ")
 
   let longestWord = ''
@@ -10,5 +10,7 @@ export const longestWord = (tweet) => {
     }
   })
 
-  return longestWord
+  return [longestWord]
 }
+
+export default longestWord

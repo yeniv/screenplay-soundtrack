@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import './song.css'
-
 class Song extends Component {
   render() {
     const song = this.props.value

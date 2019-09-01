@@ -4,6 +4,7 @@ import Header from "./header.js"
 import Search from "./search.js"
 import Playlist from "./playlist.js"
 import Footer from "./footer.js"
+
 import SpotifyLogin from "./spotifyLogin.js"
 import longestWord from "./longestWord.js"
 
@@ -32,7 +33,8 @@ class App extends Component {
     this.state = {
       token: null,
       searchInput: "",
-      searchSubmit: "test"
+      songs: []
+      // searchSubmit: ""
     }
   }
 
@@ -45,7 +47,7 @@ class App extends Component {
 
   spotifySearch(searchTerms) {
     const baseURL     = "https://api.spotify.com/v1/search"
-    const searchQuery = searchTerms.join(" ")
+    const searchQuery = searchTerms //.join(" ")
     const type        = "track"
     const limit       = "1"
     const getRequest  = `${baseURL}?q=${searchQuery}&type=${type}&limit=${limit}`
@@ -58,7 +60,19 @@ class App extends Component {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
+      const info = data.tracks.items[0]
+      const newSong = {
+        title: info.name,
+        uri: info.uri,
+        artist: info.album.artists[0].name,
+        albumTitle: info.album.name,
+        albumCover: info.album.images[0].url
+      }
+      // console.log(data)
+      console.log(newSong)
+      this.setState({
+        songs: newSong
+      })
     })
     .catch((error) => {
       console.log(error);
@@ -73,10 +87,9 @@ class App extends Component {
     this.setState({searchInput: input})
   }
 
-  handleSearchSubmit(input) {
-    this.setState({searchSubmit: this.state.searchInput})
-
-
+  handleSearchSubmit() {
+    this.spotifySearch(this.state.searchInput)
+    console.log(this.state.songs)
     // const topics = this.getTopics(this.state.searchInput)
     // if (topics.length === 0) {
     //   // return longestWord(this.state.searchInput)
@@ -99,7 +112,7 @@ class App extends Component {
                 handleSearchChange={this.handleSearchChange}
                 handleSearchSubmit={this.handleSearchSubmit} />
               <Playlist
-                value={this.state.searchSubmit} />
+                value={this.state.songs} />
               <Footer />
             </div>}
       </div>

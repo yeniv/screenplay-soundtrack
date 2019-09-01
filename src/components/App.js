@@ -8,7 +8,7 @@ import Footer from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
 import longestWord from "./longestWord.js"
 
-import nlp from 'compromise';
+import nlp from 'compromise'
 
 import './App.css'
 
@@ -30,6 +30,7 @@ class App extends Component {
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
     this.getTopics = this.getTopics.bind(this)
     this.spotifySearch = this.spotifySearch.bind(this)
+    this.movieSearch = this.movieSearch.bind(this)
     this.state = {
       token: null,
       searchInput: "",
@@ -61,7 +62,7 @@ class App extends Component {
     .then((response) => response.json())
     .then((data) => {
       const info = data.tracks.items[0]
-      const newSong = {
+      const songData = {
         title: info.name,
         uri: info.uri,
         artist: info.album.artists[0].name,
@@ -69,8 +70,30 @@ class App extends Component {
         albumCover: info.album.images[0].url
       }
       this.setState({
-        songs: this.state.songs.concat(newSong)
+        songs: this.state.songs.concat(songData)
       })
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  movieSearch(search) {
+    const baseURL     = 'http://www.omdbapi.com/?t='
+    const searchQuery = search.replace(' ', '+')
+    const plot        = 'full'
+    const apiKey      = 'a7198c97'
+    const getRequest  = `${baseURL}${searchQuery}&plot=${plot}&apikey=${apiKey}`
+
+    fetch(getRequest)
+    .then((response) => response.json())
+    .then((data) => {
+      const movieData = {
+        plot: data.Plot,
+        actors: data.Actors,
+        poster: data.Poster
+      }
+      console.log(movieData)
     })
     .catch((error) => {
       console.log(error);
@@ -87,6 +110,7 @@ class App extends Component {
 
   handleSearchSubmit() {
     this.spotifySearch(this.state.searchInput)
+    this.movieSearch(this.state.searchInput)
   }
 
   render() {

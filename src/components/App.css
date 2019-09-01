@@ -5,6 +5,7 @@
 }
 
 .app {
+  width: 800px;
 }
 
 .header {
@@ -16,15 +17,15 @@
 .playlist {
 }
 
-.pair {
+.song {
   display: flex;
 }
 
-.tweet {
+.song img {
+  height: 200px;
+  width: 200px;
 }
 
-.song {
-}
 
 .footer{
 }

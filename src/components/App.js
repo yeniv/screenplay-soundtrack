@@ -71,7 +71,7 @@ class App extends Component {
       // console.log(data)
       console.log(newSong)
       this.setState({
-        songs: newSong
+        songs: this.state.songs.concat(newSong)
       })
     })
     .catch((error) => {
@@ -90,14 +90,7 @@ class App extends Component {
   handleSearchSubmit() {
     this.spotifySearch(this.state.searchInput)
     console.log(this.state.songs)
-    // const topics = this.getTopics(this.state.searchInput)
-    // if (topics.length === 0) {
-    //   // return longestWord(this.state.searchInput)
-    //   console.log(`longest word: ${longestWord(this.state.searchInput)}`)
-    // } else {
-    // // return topics
-    // console.log(`topics: ${topics}`)
-    }
+  }
 
   render() {
     return (

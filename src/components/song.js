@@ -14,6 +14,7 @@ class Song extends Component {
           <p>Title: {song.title}</p>
           <p>Artist: {song.artist}</p>
           <p>Album: {song.albumTitle}</p>
+          <p>URI: {song.uri}</p>
         </div>
       </div>
     )

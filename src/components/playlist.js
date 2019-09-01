@@ -6,7 +6,7 @@ class Playlist extends Component {
     return (
       <div className='playlist'>
         {
-          this.props.value.map((song, index) => {
+          this.props.songs.map((song, index) => {
             return <Song value={song} key={index}/>
           })
         }

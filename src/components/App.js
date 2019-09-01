@@ -68,8 +68,6 @@ class App extends Component {
         albumTitle: info.album.name,
         albumCover: info.album.images[0].url
       }
-      // console.log(data)
-      console.log(newSong)
       this.setState({
         songs: this.state.songs.concat(newSong)
       })
@@ -89,7 +87,6 @@ class App extends Component {
 
   handleSearchSubmit() {
     this.spotifySearch(this.state.searchInput)
-    console.log(this.state.songs)
   }
 
   render() {
@@ -105,7 +102,7 @@ class App extends Component {
                 handleSearchChange={this.handleSearchChange}
                 handleSearchSubmit={this.handleSearchSubmit} />
               <Playlist
-                value={this.state.songs} />
+                songs={this.state.songs} />
               <Footer />
             </div>}
       </div>

@@ -9,13 +9,11 @@ class Search extends Component {
 
   handleChange(e) {
     this.props.handleSearchChange(e.target.value)
-    console.log(e.target.value)
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    this.props.handleSearchSubmit(e.target.value)
-    console.log('submitted!')
+    this.props.handleSearchSubmit(this.value)
   }
 
   render() {
@@ -23,7 +21,6 @@ class Search extends Component {
       <div className='search'>
         <form onSubmit={this.handleSubmit}>
           <label>
-            @
             <input
               type="text"
               value={this.props.value}

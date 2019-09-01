@@ -32,8 +32,7 @@ class App extends Component {
     this.state = {
       token: null,
       searchInput: "",
-      // playlistValue is only for testing the components are working as expected
-      playlistValue: ""
+      searchSubmit: "test"
     }
   }
 
@@ -74,16 +73,18 @@ class App extends Component {
     this.setState({searchInput: input})
   }
 
-  handleSearchSubmit() {
-    const topics = this.getTopics(this.state.searchInput)
-    if (topics.length === 0) {
-      // return longestWord(this.state.searchInput)
-      console.log(`longest word: ${longestWord(this.state.searchInput)}`)
-    } else {
-    // return topics
-    console.log(`topics: ${topics}`)
+  handleSearchSubmit(input) {
+    this.setState({searchSubmit: this.state.searchInput})
+
+
+    // const topics = this.getTopics(this.state.searchInput)
+    // if (topics.length === 0) {
+    //   // return longestWord(this.state.searchInput)
+    //   console.log(`longest word: ${longestWord(this.state.searchInput)}`)
+    // } else {
+    // // return topics
+    // console.log(`topics: ${topics}`)
     }
-  }
 
   render() {
     return (
@@ -98,7 +99,7 @@ class App extends Component {
                 handleSearchChange={this.handleSearchChange}
                 handleSearchSubmit={this.handleSearchSubmit} />
               <Playlist
-                value={this.state.playlistValue} />
+                value={this.state.searchSubmit} />
               <Footer />
             </div>}
       </div>

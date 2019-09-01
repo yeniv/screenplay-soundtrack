@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
 
+import './song.css'
+
 class Song extends Component {
   render() {
+    const song = this.props.value
     return (
       <div className='song'>
-        <p>I'm a Song component!</p>
-        <p>Test: {this.props.value}</p>
+        <img
+          src={song.albumCover}
+          alt=""/>
+        <div className="song-info">
+          <p>Title: {song.title}</p>
+          <p>Artist: {song.artist}</p>
+          <p>Album: {song.albumTitle}</p>
+          <p>URI: {song.uri}</p>
+        </div>
       </div>
     )
   }

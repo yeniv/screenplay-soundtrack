@@ -5,7 +5,11 @@ class Playlist extends Component {
   render() {
     return (
       <div className='playlist'>
-        <Song value={this.props.value}/>
+        {
+          this.props.songs.map((song, index) => {
+            return <Song value={song} key={index}/>
+          })
+        }
       </div>
     )
   }

@@ -7,13 +7,13 @@ class Search extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(e) {
-    this.props.handleSearchChange(e.target.value)
+  handleChange(event) {
+    this.props.handleSearchChange(event.target.value)
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
-    this.props.handleSearchSubmit(this.value)
+  handleSubmit(event) {
+    event.preventDefault()
+    this.props.handleSearchSubmit()
   }
 
   render() {

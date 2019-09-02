@@ -12,6 +12,7 @@ class SavePlaylist extends Component {
   handleClick() {
     console.log('the button works!')
     console.log(this.props.userID)
+    console.log(this.props.token)
     this.createPlaylist()
   }
 
@@ -27,10 +28,10 @@ class SavePlaylist extends Component {
         'Authorization': "Bearer " + this.props.token,
         'Content-Type': 'application/json'
         },
-      body: {
+      body: JSON.stringify({
         name: name,
         description: description
-      }
+      })
     })
     .then(response => response.json())
     .then((data) => {

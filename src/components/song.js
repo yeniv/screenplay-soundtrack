@@ -9,10 +9,9 @@ class Song extends Component {
           src={song.albumCover}
           alt=""/>
         <div className="song-info">
-          <p>Title: {song.title}</p>
-          <p>Artist: {song.artist}</p>
-          <p>Album: {song.albumTitle}</p>
-          <p>URI: {song.uri}</p>
+          <h3>{song.title}</h3>
+          <p><span>By</span> {song.artist}</p>
+          <p><span>From</span> {song.albumTitle}</p>
         </div>
       </div>
     )

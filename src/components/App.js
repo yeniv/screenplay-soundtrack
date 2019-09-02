@@ -61,7 +61,9 @@ class App extends Component {
         poster: data.Poster
       }
       this.setState({movie: movieData})
+
       const topics = this.getTopics(movieData.plot)
+
       topics.forEach((topic) => {
         this.spotifySearch(topic)
       })
@@ -85,6 +87,7 @@ class App extends Component {
     })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data)
       if (data.tracks.items.length === 0) {
         return null
       }
@@ -114,6 +117,7 @@ class App extends Component {
   }
 
   handleSearchSubmit() {
+    this.setState({songs: []})
     this.movieSearch(this.state.searchInput)
   }
 

@@ -11,11 +11,32 @@ class SavePlaylist extends Component {
 
   handleClick() {
     console.log('the button works!')
+    console.log(this.props.userID)
+    this.createPlaylist()
   }
 
-  createPlaylist(){
-    POST https://api.spotify.com/v1/users/{user_id}/playlists
+  createPlaylist() {
+    const baseURL     = "https://api.spotify.com/v1/users/"
+    const name        = `${this.props.title} playlist`
+    const description = "Created with PLOTIFY"
+    const getRequest  = `${baseURL}${this.props.userID}/playlists`
 
+    fetch(getRequest, {
+      method: "POST",
+      headers: {
+        'Authorization': "Bearer " + this.props.token,
+        'Content-Type': 'application/json'
+        },
+      body: {
+        name: name,
+        description: description
+      }
+    })
+    .then(response => response.json())
+    .then((data) => {
+      console.log(data)
+    })
+    .catch(error => console.log(error))
   }
 
   addSongsToPlaylist(){}

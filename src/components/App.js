@@ -126,9 +126,7 @@ class App extends Component {
         songs: this.state.songs.concat(songData)
       })
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch(error => console.log(error))
   }
 
   getTopics(string) {
@@ -177,6 +175,7 @@ class App extends Component {
                     topics={this.state.topics} />
 
                   <SavePlaylist
+                    token={this.state.token}
                     userID={this.state.userData.id}
                     title={this.state.movie.title} />
 

@@ -35,7 +35,6 @@ class App extends Component {
       searchInput: "",
       songs: [],
       movie: null
-      // searchSubmit: ""
     }
   }
 
@@ -61,8 +60,44 @@ class App extends Component {
         actors: data.Actors,
         poster: data.Poster
       }
+      this.setState({movie: movieData})
+      const topics = this.getTopics(movieData.plot)
+      topics.forEach((topic) => {
+        this.spotifySearch(topic)
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
+
+  spotifySearch(search) {
+    const baseURL     = "https://api.spotify.com/v1/search"
+    const type        = "track"
+    const limit       = "1"
+    const getRequest  = `${baseURL}?q=${search}&type=${type}&limit=${limit}`
+
+    fetch(getRequest, {
+      method: "GET",
+      headers: {
+        'Authorization': "Bearer " + this.props.token
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.tracks.items.length === 0) {
+        return null
+      }
+      const info = data.tracks.items[0]
+      const songData = {
+        title: info.name,
+        uri: info.uri,
+        artist: info.album.artists[0].name,
+        albumTitle: info.album.name,
+        albumCover: info.album.images[0].url
+      }
       this.setState({
-        movie: movieData
+        songs: this.state.songs.concat(songData)
       })
     })
     .catch((error) => {
@@ -83,6 +118,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.songs)
     return (
       <div className="container">
           {!this.state.token &&
@@ -100,9 +136,7 @@ class App extends Component {
 
               {this.state.movie &&
                 <Playlist
-                  token={this.state.token}
-                  topics={this.getTopics(this.state.movie.plot)} />}
-
+                  songs={this.state.songs} />}
               <Footer />
             </div>}
       </div>

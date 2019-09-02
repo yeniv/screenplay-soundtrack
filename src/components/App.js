@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import Header from "./header.js"
 import Search from "./search.js"
 import Poster from "./poster.js"
+import SavePlaylist from "./SavePlaylist.js"
 import Playlist from "./playlist.js"
 import Footer from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
@@ -153,6 +154,9 @@ class App extends Component {
                     poster={this.state.movie.poster}
                     plot={this.state.movie.plot}
                     topics={this.state.topics} />
+
+                  <SavePlaylist
+                    title={this.state.movie.title} />
 
                   <Playlist
                     songs={this.state.songs} />

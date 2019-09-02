@@ -4,9 +4,7 @@ import Header from "./header.js"
 import Search from "./search.js"
 import Playlist from "./playlist.js"
 import Footer from "./footer.js"
-
 import SpotifyLogin from "./spotifyLogin.js"
-import longestWord from "./longestWord.js"
 
 import nlp from 'compromise'
 
@@ -82,7 +80,7 @@ class App extends Component {
     fetch(getRequest, {
       method: "GET",
       headers: {
-        'Authorization': "Bearer " + this.props.token
+        'Authorization': "Bearer " + this.state.token
         }
     })
     .then((response) => response.json())

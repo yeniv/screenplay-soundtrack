@@ -2,6 +2,7 @@ import React, { Component } from "react"
 
 import Header from "./header.js"
 import Search from "./search.js"
+import Poster from "./poster.js"
 import Playlist from "./playlist.js"
 import Footer from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
@@ -28,6 +29,7 @@ class App extends Component {
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
     this.getTopics = this.getTopics.bind(this)
     this.movieSearch = this.movieSearch.bind(this)
+    this.removeDuplicates = this.removeDuplicates.bind(this)
     this.state = {
       token: null,
       searchInput: "",
@@ -58,11 +60,12 @@ class App extends Component {
         actors: data.Actors,
         poster: data.Poster
       }
+
       this.setState({movie: movieData})
 
       const topics = this.getTopics(movieData.plot)
-
-      topics.forEach((topic) => {
+      const noDups = this.removeDuplicates(topics)
+      noDups.forEach((topic) => {
         this.spotifySearch(topic)
       })
     })
@@ -85,7 +88,6 @@ class App extends Component {
     })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
       if (data.tracks.items.length === 0) {
         return null
       }
@@ -107,7 +109,15 @@ class App extends Component {
   }
 
   getTopics(string) {
-    return nlp(string).nouns().out("array")
+    const topics = nlp(string).nouns().out("array")
+    this.setState({topics: topics})
+    return topics
+  }
+
+  removeDuplicates(array) {
+    return array.filter((item, index) => {
+      return array.indexOf(item) >= index
+    })
   }
 
   handleSearchChange(input) {
@@ -120,7 +130,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.songs)
+    console.log(this.removeDuplicates(this.state.songs))
     return (
       <div className="container">
           {!this.state.token &&
@@ -137,8 +147,16 @@ class App extends Component {
                 handleSearchSubmit={this.handleSearchSubmit} />
 
               {this.state.movie &&
-                <Playlist
-                  songs={this.state.songs} />}
+                <div className="dynamic-content">
+                  <Poster
+                    poster={this.state.movie.poster}
+                    plot={this.state.movie.plot}
+                    topics={this.state.topics} />
+
+                  <Playlist
+                    songs={this.state.songs} />
+                </div>}
+
               <Footer />
             </div>}
       </div>

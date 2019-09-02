@@ -25,10 +25,11 @@ class Search extends Component {
             <input
               className='search-input'
               type='text'
+              placeholder="Type your favourite movie..."
               value={this.props.value}
               onChange={this.handleChange} />
           </label>
-          <input className='search-button' type='submit' value='Search' />
+          <input className='search-button' type='submit' value='Create' />
         </form>
       </div>
     )

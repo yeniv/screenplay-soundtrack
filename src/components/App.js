@@ -34,7 +34,8 @@ class App extends Component {
     this.state = {
       token: null,
       searchInput: "",
-      songs: []
+      songs: [],
+      movie: null
       // searchSubmit: ""
     }
   }
@@ -61,6 +62,9 @@ class App extends Component {
     })
     .then((response) => response.json())
     .then((data) => {
+      if (data.tracks.items.length === 0) {
+        return null
+      }
       const info = data.tracks.items[0]
       const songData = {
         title: info.name,
@@ -93,6 +97,9 @@ class App extends Component {
         actors: data.Actors,
         poster: data.Poster
       }
+      this.setState({
+        movie: movieData
+      })
       console.log(movieData)
     })
     .catch((error) => {
@@ -118,15 +125,22 @@ class App extends Component {
       <div className="container">
           {!this.state.token &&
             <SpotifyLogin />}
+
           {this.state.token &&
             <div className="app">
+
               <Header />
+
               <Search
                 value={this.state.searchInput}
                 handleSearchChange={this.handleSearchChange}
                 handleSearchSubmit={this.handleSearchSubmit} />
-              <Playlist
-                songs={this.state.songs} />
+
+              {this.state.movie &&
+                <Playlist
+                  topics={this.getTopics(this.state.movie.plot)}
+                  songs={this.state.songs} />}
+
               <Footer />
             </div>}
       </div>

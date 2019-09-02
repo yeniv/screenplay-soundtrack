@@ -29,7 +29,6 @@ class App extends Component {
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
     this.getTopics = this.getTopics.bind(this)
-    this.spotifySearch = this.spotifySearch.bind(this)
     this.movieSearch = this.movieSearch.bind(this)
     this.state = {
       token: null,
@@ -45,41 +44,6 @@ class App extends Component {
     if (token) {
       this.setState({token: token})
     }
-  }
-
-  spotifySearch(searchTerms) {
-    const baseURL     = "https://api.spotify.com/v1/search"
-    const searchQuery = searchTerms //.join(" ")
-    const type        = "track"
-    const limit       = "1"
-    const getRequest  = `${baseURL}?q=${searchQuery}&type=${type}&limit=${limit}`
-
-    fetch(getRequest, {
-      method: "GET",
-      headers: {
-        'Authorization': "Bearer " + this.state.token
-        }
-    })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.tracks.items.length === 0) {
-        return null
-      }
-      const info = data.tracks.items[0]
-      const songData = {
-        title: info.name,
-        uri: info.uri,
-        artist: info.album.artists[0].name,
-        albumTitle: info.album.name,
-        albumCover: info.album.images[0].url
-      }
-      this.setState({
-        songs: this.state.songs.concat(songData)
-      })
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   }
 
   movieSearch(search) {
@@ -116,7 +80,6 @@ class App extends Component {
   }
 
   handleSearchSubmit() {
-    this.spotifySearch(this.state.searchInput)
     this.movieSearch(this.state.searchInput)
   }
 
@@ -138,8 +101,8 @@ class App extends Component {
 
               {this.state.movie &&
                 <Playlist
-                  topics={this.getTopics(this.state.movie.plot)}
-                  songs={this.state.songs} />}
+                  token={this.state.token}
+                  topics={this.getTopics(this.state.movie.plot)} />}
 
               <Footer />
             </div>}

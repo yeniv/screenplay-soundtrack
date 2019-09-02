@@ -6,8 +6,10 @@ class Playlist extends Component {
       <div className='poster'>
         <img src={this.props.poster} alt=""/>
         <div className="poster-info">
-          <p>Plot: {this.props.plot}</p>
-          <p>Topics: {this.props.topics}</p>
+          <div>
+            <h2>{this.props.title}</h2>
+            <p>{this.props.plot}</p>
+          </div>
         </div>
       </div>
     )

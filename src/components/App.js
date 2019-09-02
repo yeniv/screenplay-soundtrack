@@ -56,6 +56,7 @@ class App extends Component {
     .then((response) => response.json())
     .then((data) => {
       const movieData = {
+        title: data.Title,
         plot: data.Plot,
         actors: data.Actors,
         poster: data.Poster
@@ -130,7 +131,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.removeDuplicates(this.state.songs))
     return (
       <div className="container">
           {!this.state.token &&
@@ -149,6 +149,7 @@ class App extends Component {
               {this.state.movie &&
                 <div className="dynamic-content">
                   <Poster
+                    title={this.state.movie.title}
                     poster={this.state.movie.poster}
                     plot={this.state.movie.plot}
                     topics={this.state.topics} />

@@ -3,13 +3,22 @@ import React, { Component } from 'react'
 class SavePlaylist extends Component {
   constructor(props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleClick        = this.handleClick.bind(this)
+    this.createPlaylist     = this.createPlaylist.bind(this)
+    this.addSongsToPlaylist = this.addSongsToPlaylist.bind(this)
     this.state = {}
   }
 
   handleClick() {
     console.log('the button works!')
   }
+
+  createPlaylist(){
+    POST https://api.spotify.com/v1/users/{user_id}/playlists
+
+  }
+
+  addSongsToPlaylist(){}
 
   render() {
     return (

@@ -64,7 +64,6 @@ class App extends Component {
       this.setState({
         movie: movieData
       })
-      console.log(movieData)
     })
     .catch((error) => {
       console.log(error);

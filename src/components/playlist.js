@@ -45,6 +45,7 @@ class Playlist extends Component {
   }
 
   componentDidMount() {
+    console.log('playlist mounted!')
     const topics = this.props.topics
     topics.forEach((topic) => {
       console.log(topic)
@@ -53,10 +54,9 @@ class Playlist extends Component {
   }
 
   render() {
-    console.log('playlist render!')
     return (
       <div className='playlist'>
-        <p>{this.state.topics}</p>
+        <p>{this.props.topics}</p>
         {
           this.state.songs.map((song, index) => {
             return <Song value={song} key={index}/>

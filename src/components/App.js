@@ -160,7 +160,7 @@ class App extends Component {
             <SpotifyLogin />}
 
           {this.state.token &&
-            <div className="app">
+            <div className="navigation">
 
               <Header />
 
@@ -170,7 +170,7 @@ class App extends Component {
                 handleSearchSubmit={this.handleSearchSubmit} />
 
               {this.state.movie &&
-                <div className="dynamic-content">
+                <div className="navigation-content">
                   <Poster
                     title={this.state.movie.title}
                     poster={this.state.movie.poster}
@@ -183,12 +183,13 @@ class App extends Component {
                     title={this.state.movie.title}
                     songs={this.state.songs} />
 
-                  <Playlist
-                    songs={this.state.songs} />
+                  <Footer />
                 </div>}
-
-              <Footer />
             </div>}
+
+        <Playlist
+          songs={this.state.songs} />
+
       </div>
     )
   }

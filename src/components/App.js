@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 
-import Nav          from "./nav.js"
 import Header       from "./header.js"
 import Search       from "./search.js"
 import Poster       from "./poster.js"
@@ -157,38 +156,36 @@ class App extends Component {
     return (
       <div className="container">
 
+        {!this.state.token &&
+          <SpotifyLogin />}
 
-          {!this.state.token &&
-            <SpotifyLogin />}
+        {this.state.token &&
+          <div className="navigation">
 
-          {this.state.token &&
-            <div className="navigation">
+            <Header />
 
-              <Header />
+            <Search
+              value={this.state.searchInput}
+              handleSearchChange={this.handleSearchChange}
+              handleSearchSubmit={this.handleSearchSubmit} />
 
-              <Search
-                value={this.state.searchInput}
-                handleSearchChange={this.handleSearchChange}
-                handleSearchSubmit={this.handleSearchSubmit} />
+            {this.state.movie &&
+              <div className="navigation-content">
+                <Poster
+                  title={this.state.movie.title}
+                  poster={this.state.movie.poster}
+                  plot={this.state.movie.plot}
+                  topics={this.state.topics} />
 
-              {this.state.movie &&
-                <div className="navigation-content">
-                  <Poster
-                    title={this.state.movie.title}
-                    poster={this.state.movie.poster}
-                    plot={this.state.movie.plot}
-                    topics={this.state.topics} />
+                <SavePlaylist
+                  token={this.state.token}
+                  userID={this.state.userData.id}
+                  title={this.state.movie.title}
+                  songs={this.state.songs} />
 
-                  <SavePlaylist
-                    token={this.state.token}
-                    userID={this.state.userData.id}
-                    title={this.state.movie.title}
-                    songs={this.state.songs} />
-
-                  <Footer />
-                </div>}
-            </div>}
-
+                <Footer />
+              </div>}
+          </div>}
         <Playlist
           songs={this.state.songs} />
 

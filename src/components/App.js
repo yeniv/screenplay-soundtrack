@@ -163,29 +163,32 @@ class App extends Component {
         {this.state.token &&
           <div className="navigation">
 
-            <Header />
-
-            <Search
-              value={this.state.searchInput}
-              handleSearchChange={this.handleSearchChange}
-              handleSearchSubmit={this.handleSearchSubmit} />
+            {!this.state.movie &&
+              <div className="welcome-message">
+                <Header />
+                <Search
+                  value={this.state.searchInput}
+                  handleSearchChange={this.handleSearchChange}
+                  handleSearchSubmit={this.handleSearchSubmit} />
+                </div>}
 
             {this.state.movie &&
               <div className="after-search-content">
                 <div className="navbar">
                   <div className="navbar-left">
-                  <NavHeader />
+                    <NavHeader />
 
-                  <Search
-                    value={this.state.searchInput}
-                    handleSearchChange={this.handleSearchChange}
-                    handleSearchSubmit={this.handleSearchSubmit} />
-                  </div>
-                  <SavePlaylist
-                    token={this.state.token}
-                    userID={this.state.userData.id}
-                    title={this.state.movie.title}
-                    songs={this.state.songs} />
+                    <Search
+                      value={this.state.searchInput}
+                      handleSearchChange={this.handleSearchChange}
+                      handleSearchSubmit={this.handleSearchSubmit} />
+                    </div>
+
+                    <SavePlaylist
+                      token={this.state.token}
+                      userID={this.state.userData.id}
+                      title={this.state.movie.title}
+                      songs={this.state.songs} />
                   </div>
 
                 <Poster
@@ -199,7 +202,6 @@ class App extends Component {
           </div>}
         <Playlist
           songs={this.state.songs} />
-
       </div>
     )
   }

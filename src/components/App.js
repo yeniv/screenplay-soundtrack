@@ -154,23 +154,26 @@ class App extends Component {
   }
 
   render() {
+    let greeting
+    if (this.state.token) {
+      greeting = <Search
+                  value={this.state.searchInput}
+                  handleSearchChange={this.handleSearchChange}
+                  handleSearchSubmit={this.handleSearchSubmit} />
+    } else {
+      greeting = <SpotifyLogin />
+    }
+
     return (
       <div className="container">
 
-        {!this.state.token &&
-          <SpotifyLogin />}
-
-        {this.state.token &&
-          <div className="navigation">
+          <div className="container-left">
 
             {!this.state.movie &&
               <div className="welcome-message">
                 <Header />
-                <Search
-                  value={this.state.searchInput}
-                  handleSearchChange={this.handleSearchChange}
-                  handleSearchSubmit={this.handleSearchSubmit} />
-                </div>}
+                {greeting}
+              </div>}
 
             {this.state.movie &&
               <div className="after-search-content">
@@ -199,7 +202,7 @@ class App extends Component {
 
                 <Footer />
             </div>}
-          </div>}
+          </div>
         <Playlist
           songs={this.state.songs} />
       </div>

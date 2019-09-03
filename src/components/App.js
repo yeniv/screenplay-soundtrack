@@ -1,13 +1,14 @@
 import React, { Component } from "react"
 
-import Header from "./header.js"
-import Search from "./search.js"
-import Poster from "./poster.js"
-import Playlist from "./playlist.js"
-import Footer from "./footer.js"
+import Header       from "./header.js"
+import Search       from "./search.js"
+import Poster       from "./poster.js"
+import SavePlaylist from "./SavePlaylist.js"
+import Playlist     from "./playlist.js"
+import Footer       from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
 
-import nlp from 'compromise'
+import nlp          from 'compromise'
 
 import './App.css'
 
@@ -27,14 +28,16 @@ class App extends Component {
     super(props)
     this.handleSearchChange = this.handleSearchChange.bind(this)
     this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
-    this.getTopics = this.getTopics.bind(this)
-    this.movieSearch = this.movieSearch.bind(this)
-    this.removeDuplicates = this.removeDuplicates.bind(this)
+    this.getTopics          = this.getTopics.bind(this)
+    this.movieSearch        = this.movieSearch.bind(this)
+    this.removeDuplicates   = this.removeDuplicates.bind(this)
+    this.getSpotifyUserData = this.getSpotifyUserData.bind(this)
     this.state = {
-      token: null,
-      searchInput: "",
-      songs: [],
-      movie: null
+      token:        null,
+      searchInput:  "",
+      songs:        [],
+      movie:        null,
+      userData:     null
     }
   }
 
@@ -42,7 +45,29 @@ class App extends Component {
     const token = hashFragment.access_token
     if (token) {
       this.setState({token: token})
+      this.getSpotifyUserData(token)
     }
+  }
+
+  getSpotifyUserData(token){
+    const getRequest  = "https://api.spotify.com/v1/me"
+
+    fetch(getRequest, {
+      method: "GET",
+      headers: {
+        'Authorization': "Bearer " + token
+        }
+    })
+    .then(response => response.json())
+    .then((data) => {
+      const userData = {
+        id: data.id,
+        displayName: data.display_name,
+        image: data.images[0].url
+      }
+      this.setState({userData: userData})
+    })
+    .catch(error => console.log(error))
   }
 
   movieSearch(search) {
@@ -53,11 +78,11 @@ class App extends Component {
     const getRequest  = `${baseURL}${searchQuery}&plot=${plot}&apikey=${apiKey}`
 
     fetch(getRequest)
-    .then((response) => response.json())
+    .then(response => response.json())
     .then((data) => {
       const movieData = {
-        title: data.Title,
-        plot: data.Plot,
+        title:  data.Title,
+        plot:   data.Plot,
         actors: data.Actors,
         poster: data.Poster
       }
@@ -66,13 +91,9 @@ class App extends Component {
 
       const topics = this.getTopics(movieData.plot)
       const noDups = this.removeDuplicates(topics)
-      noDups.forEach((topic) => {
-        this.spotifySearch(topic)
-      })
+      noDups.forEach(topic => {this.spotifySearch(topic)})
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch(error => console.log(error))
   }
 
   spotifySearch(search) {
@@ -87,16 +108,16 @@ class App extends Component {
         'Authorization': "Bearer " + this.state.token
         }
     })
-    .then((response) => response.json())
+    .then(response => response.json())
     .then((data) => {
       if (data.tracks.items.length === 0) {
         return null
       }
       const info = data.tracks.items[0]
       const songData = {
-        title: info.name,
-        uri: info.uri,
-        artist: info.album.artists[0].name,
+        title:      info.name,
+        uri:        info.uri,
+        artist:     info.album.artists[0].name,
         albumTitle: info.album.name,
         albumCover: info.album.images[0].url
       }
@@ -104,9 +125,7 @@ class App extends Component {
         songs: this.state.songs.concat(songData)
       })
     })
-    .catch((error) => {
-      console.log(error);
-    });
+    .catch(error => console.log(error))
   }
 
   getTopics(string) {
@@ -153,6 +172,12 @@ class App extends Component {
                     poster={this.state.movie.poster}
                     plot={this.state.movie.plot}
                     topics={this.state.topics} />
+
+                  <SavePlaylist
+                    token={this.state.token}
+                    userID={this.state.userData.id}
+                    title={this.state.movie.title}
+                    songs={this.state.songs} />
 
                   <Playlist
                     songs={this.state.songs} />

@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+import NavHeader    from "./navHeader.js"
 import Header       from "./header.js"
 import Search       from "./search.js"
 import Poster       from "./poster.js"
@@ -170,21 +171,31 @@ class App extends Component {
               handleSearchSubmit={this.handleSearchSubmit} />
 
             {this.state.movie &&
-              <div className="navigation-content">
+              <div className="after-search-content">
+                <div className="navbar">
+                  <div className="navbar-left">
+                  <NavHeader />
+
+                  <Search
+                    value={this.state.searchInput}
+                    handleSearchChange={this.handleSearchChange}
+                    handleSearchSubmit={this.handleSearchSubmit} />
+                  </div>
+                  <SavePlaylist
+                    token={this.state.token}
+                    userID={this.state.userData.id}
+                    title={this.state.movie.title}
+                    songs={this.state.songs} />
+                  </div>
+
                 <Poster
                   title={this.state.movie.title}
                   poster={this.state.movie.poster}
                   plot={this.state.movie.plot}
                   topics={this.state.topics} />
 
-                <SavePlaylist
-                  token={this.state.token}
-                  userID={this.state.userData.id}
-                  title={this.state.movie.title}
-                  songs={this.state.songs} />
-
                 <Footer />
-              </div>}
+            </div>}
           </div>}
         <Playlist
           songs={this.state.songs} />

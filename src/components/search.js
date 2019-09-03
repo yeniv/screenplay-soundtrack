@@ -29,7 +29,6 @@ class Search extends Component {
               value={this.props.value}
               onChange={this.handleChange} />
           </label>
-          <input className='search-button' type='submit' value='Create' />
         </form>
       </div>
     )

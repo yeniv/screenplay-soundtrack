@@ -69,12 +69,9 @@ class SavePlaylist extends Component {
 
   render() {
     return (
-      <div className='save-playlist'>
-      {!this.state.playlistCreated && <p>playlist not created</p>}
       <button
         className="save-playlist-btn"
-        onClick={this.createPlaylist}>Save {this.props.title} playlist to your Spotify</button>
-      </div>
+        onClick={this.createPlaylist}>Save playlist on Spotify</button>
     )
   }
 }

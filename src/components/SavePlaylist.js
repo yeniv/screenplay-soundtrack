@@ -6,20 +6,19 @@ class SavePlaylist extends Component {
     this.handleClick        = this.handleClick.bind(this)
     this.createPlaylist     = this.createPlaylist.bind(this)
     this.addSongsToPlaylist = this.addSongsToPlaylist.bind(this)
-    this.state = {}
+    this.state = {
+      playlistData: null
+    }
   }
 
   handleClick() {
-    console.log('the button works!')
-    console.log(this.props.userID)
-    console.log(this.props.token)
     this.createPlaylist()
   }
 
   createPlaylist() {
     const baseURL     = "https://api.spotify.com/v1/users/"
     const name        = `${this.props.title} playlist`
-    const description = "Created with PLOTIFY"
+    const description = `Created with PLOTIFY from the plot of ${this.props.title}.`
     const getRequest  = `${baseURL}${this.props.userID}/playlists`
 
     fetch(getRequest, {
@@ -35,12 +34,18 @@ class SavePlaylist extends Component {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log(data)
+      const playlistData = {
+        ID: data.id,
+        URI: data.uri
+      }
+      this.setState({playlistData: playlistData})
     })
     .catch(error => console.log(error))
   }
 
-  addSongsToPlaylist(){}
+  addSongsToPlaylist() {
+
+  }
 
   render() {
     return (

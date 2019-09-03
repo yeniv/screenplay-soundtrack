@@ -14,8 +14,8 @@ class SavePlaylist extends Component {
 
   createPlaylist() {
     const baseURL     = "https://api.spotify.com/v1/users/"
-    const name        = `${this.props.title} playlist`
-    const description = `Created with PLOTIFY from the plot of ${this.props.title}.`
+    const name        =  this.props.title
+    const description = `Playlist created with PLOTIFY.`
     const getRequest  = `${baseURL}${this.props.userID}/playlists`
 
     fetch(getRequest, {
@@ -39,9 +39,8 @@ class SavePlaylist extends Component {
         playlistData: playlistData,
         playlistCreated: true
       })
-      return playlistData.ID
+      this.addSongsToPlaylist(playlistData.ID)
     })
-    .then(playlistID => this.addSongsToPlaylist(playlistID))
     .catch(error => console.log(error))
   }
 

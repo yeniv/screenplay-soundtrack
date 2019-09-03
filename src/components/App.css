@@ -11,7 +11,13 @@ body {
   margin-top: 100px;
 }
 
-.welcome-message {}
+.welcome-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-bottom: 120px
+}
 
 .container-left {}
 
@@ -25,24 +31,24 @@ body {
 }
 
 .header h1 {
-  font-size: 67.5px;
+  font-size: 100px;
   font-weight: 900;
   color: rgba(250, 14, 40, 1);
   letter-spacing: 3px;
-  margin-bottom: -20px;
+  margin-bottom: -30px;
 }
 
 .header span {
   position: relative;
-  bottom: 3px;
-  font-size: 59px;
-  margin: 0px -8px;
+  bottom: 5px;
+  font-size: 90px;
+  margin: 0px -17px;
 }
 
 .header h3 {
-  font-size: 20px;
+  font-size: 24px;
   color: rgb(55, 55, 55);
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .search {}
@@ -64,6 +70,7 @@ body {
   border-radius: 40px;
   border-style: solid;
   border: 4px solid rgb(250, 14, 40);
+  text-align: center;
 }
 
 .search-button:hover {

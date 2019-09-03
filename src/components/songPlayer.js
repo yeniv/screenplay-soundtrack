@@ -1,23 +1,19 @@
 import React, { Component } from 'react'
 
-class Player extends Component {
+class SongPlayer extends Component {
   render() {
     return (
-      <div className='spotify-player'>
-
         <iframe
           title="player"
-          src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3"
+          src={`https://open.spotify.com/embed/track/${this.props.value.id}`}
           width="300"
           height="380"
-          frameborder="0"
+          frameBorder="0"
           allowtransparency="true"
           allow="encrypted-media">
         </iframe>
-
-      </div>
     )
   }
 }
 
-export default Player
+export default SongPlayer

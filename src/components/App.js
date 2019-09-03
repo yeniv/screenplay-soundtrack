@@ -3,8 +3,8 @@ import React, { Component } from "react"
 import Header       from "./header.js"
 import Search       from "./search.js"
 import Poster       from "./poster.js"
-import SavePlaylist from "./SavePlaylist.js"
-import Player       from "./player.js"
+import SavePlaylist from "./savePlaylist.js"
+import SongPlayer   from "./songPlayer.js"
 import Playlist     from "./playlist.js"
 import Footer       from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
@@ -111,19 +111,20 @@ class App extends Component {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log(data)
       if (data.tracks.items.length === 0) {
         return null
       }
       const info = data.tracks.items[0]
       const songData = {
         title:      info.name,
+        id:         info.id,
         uri:        info.uri,
         artist:     info.album.artists[0].name,
         albumTitle: info.album.name,
         albumCover: info.album.images[0].url,
         url:        info.external_urls.spotify
       }
+      console.log(songData)
       this.setState({
         songs: this.state.songs.concat(songData)
       })
@@ -181,9 +182,6 @@ class App extends Component {
                     userID={this.state.userData.id}
                     title={this.state.movie.title}
                     songs={this.state.songs} />
-
-                  <Player
-                    token={this.state.token} />
 
                   <Playlist
                     songs={this.state.songs} />

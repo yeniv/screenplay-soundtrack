@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Song from './song.js'
+import SongPlayer from './songPlayer.js'
 
 class Playlist extends Component {
   render() {
@@ -7,7 +7,7 @@ class Playlist extends Component {
       <div className='playlist'>
         {
           this.props.songs.map((song, index) => {
-            return <Song value={song} key={index}/>
+            return <SongPlayer value={song} key={index}/>
           })
         }
       </div>

@@ -110,7 +110,6 @@ class App extends Component {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log(data)
       if (data.tracks.items.length === 0) {
         return null
       }
@@ -177,7 +176,8 @@ class App extends Component {
                   <SavePlaylist
                     token={this.state.token}
                     userID={this.state.userData.id}
-                    title={this.state.movie.title} />
+                    title={this.state.movie.title}
+                    songs={this.state.songs} />
 
                   <Playlist
                     songs={this.state.songs} />

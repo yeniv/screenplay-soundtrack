@@ -1,10 +1,10 @@
 import React, { Component } from "react"
 
+import Nav          from "./nav.js"
 import Header       from "./header.js"
 import Search       from "./search.js"
 import Poster       from "./poster.js"
 import SavePlaylist from "./savePlaylist.js"
-import SongPlayer   from "./songPlayer.js"
 import Playlist     from "./playlist.js"
 import Footer       from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
@@ -156,6 +156,8 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+
+
           {!this.state.token &&
             <SpotifyLogin />}
 

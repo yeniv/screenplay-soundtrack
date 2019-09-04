@@ -6,7 +6,6 @@
   padding: 18px 30px;
   width: 200px;
   color: white;
-  font-weight: 800;
   border-radius: 40px;
   margin: 0 auto;
 }
@@ -20,4 +19,6 @@ a.login-button {
   font-size: 15px;
   text-decoration: none;
   color: white;
+  text-transform: uppercase;
+  font-weight: 700;
 }

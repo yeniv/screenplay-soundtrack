@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:200,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700,900&display=swap');
 
 body {
   background-color: rgb(245, 245, 245);
@@ -80,6 +80,7 @@ body {
 }
 
 .navbar {
+  z-index: 10;
   display: flex;
   position: fixed;
   top: 0;
@@ -181,10 +182,8 @@ p span {
 .poster img {
   width: 310px;
   height: 450px;
-  /*box-shadow: -15px -15px 0px 0px rgba(250, 14, 40, 1);*/
   border-right: 4px solid rgba(0, 0, 0, 0.1);
   border-bottom: 4px solid rgba(0, 0, 0, 0.1);
-
 }
 
 .playlist {
@@ -202,13 +201,23 @@ iframe {
 }
 
 .footer{
-  text-align: center;
-  margin: 30px;
+  display: flex;
+  justify-content: center;
+  /*position: fixed;*/
+  /*bottom: 0;*/
+  /*margin: 30px;*/
+  /*margin: 0 auto;*/
 }
 
 .footer p {
+  /*background-color: red;*/
+  font-size: 14px;
+  display: inline-block;
   color: rgb(55, 55, 55);
   font-weight: 400;
+  padding: 8px 16px;
+  border-radius: 30px;
+  /*border: 1px solid rgb(250, 14, 40);*/
 }
 
 .footer a {

@@ -4,7 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <div className='footer'>
-        <p>Built for shits and giggles by <a href="http://twitter.com/tristanviney" target="blank">@tristanviney</a></p>
+        <p><a href="http://twitter.com/tristanviney" target="blank">Built for the love of movies by <strong>@tristanviney</strong></a></p>
       </div>
     )
   }

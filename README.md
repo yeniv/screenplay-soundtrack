@@ -23,6 +23,8 @@ See alternate soundtracks for some of your favourite movies [right now](https://
 3. Better error message handling. I catch the most obvious error — film not found — but I'd like to create more tailored experiences in the rare case the user encounters another error
 4. Allow users to select which returned songs are added to their Spotify playlist
 5. Impliment a voting system to determine the most popular films by Plotify playlist
+6. Log out button
+7. Button to quickly & easily remove the permissions granted by the user once they'd like to leave
 6. Revisit, revise, and refactor my code. This was my first **react app**, which means I've no doubt made a lot of mistakes. With experience I'd like too better understand where I've gone wrong and learn for the next one! 
 
 If you spot an bug or have any suggestions to improve the app, please let me know 🙏

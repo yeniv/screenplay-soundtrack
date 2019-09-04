@@ -12,7 +12,9 @@ import ErrorHandler   from "./errorHandler.js"
 
 import nlp            from 'compromise'
 
-import './app.css'
+import './App.css'
+
+console.log(process.env.REACT_APP_test_key)
 
 const hashFragment = window.location.hash
   .substring(1)

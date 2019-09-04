@@ -38,7 +38,8 @@ class App extends Component {
       searchInput:  "",
       songs:        [],
       movie:        null,
-      userData:     null
+      userData:     null,
+      movieFound:   false
     }
   }
 
@@ -52,7 +53,6 @@ class App extends Component {
 
   getSpotifyUserData(token){
     const getRequest  = "https://api.spotify.com/v1/me"
-
     fetch(getRequest, {
       method: "GET",
       headers: {
@@ -83,9 +83,12 @@ class App extends Component {
     .then((data) => {
       console.log(data)
 
-      // if (data.Response === 'False') {
+      if (data.Response === 'False') {
       //   return null
-      // }
+        console.log('movie not found')
+        this.setState({movieFound: false})
+
+      }
 
       const movieData = {
         title:  data.Title,
@@ -94,7 +97,10 @@ class App extends Component {
         poster: data.Poster
       }
 
-      this.setState({movie: movieData})
+      this.setState({
+        movie: movieData,
+        movieFound: true
+      })
 
       const topics = this.getTopics(movieData.plot)
       const noDups = this.removeDuplicates(topics)
@@ -133,6 +139,7 @@ class App extends Component {
       }
       this.setState({songs: this.state.songs.concat(songData)})
     })
+    .catch(error => console.log(error))
   }
 
   getTopics(string) {

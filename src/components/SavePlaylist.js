@@ -71,7 +71,7 @@ class SavePlaylist extends Component {
     return (
       <button
         className="save-button"
-        onClick={this.createPlaylist}>Save playlist on Spotify</button>
+        onClick={this.createPlaylist}>Save<span className="playlist-text-in-save-button"> playlist</span> to Spotify</button>
     )
   }
 }

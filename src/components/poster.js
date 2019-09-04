@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
+import Footer from './footer.js'
 
-class Playlist extends Component {
+class Poster extends Component {
   render() {
+    if (!this.props.poster) {
+      return null
+    }
+
     return (
       <div className='poster'>
         <img src={this.props.poster} alt=""/>
@@ -11,9 +16,10 @@ class Playlist extends Component {
             <p>{this.props.plot}</p>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }
 }
 
-export default Playlist
+export default Poster

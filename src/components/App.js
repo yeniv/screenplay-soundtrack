@@ -6,8 +6,8 @@ import Search       from "./search.js"
 import Poster       from "./poster.js"
 import SavePlaylist from "./savePlaylist.js"
 import Playlist     from "./playlist.js"
-import Footer       from "./footer.js"
 import SpotifyLogin from "./spotifyLogin.js"
+import ErrorHandler from "./errorHandler.js"
 
 import nlp          from 'compromise'
 
@@ -81,6 +81,12 @@ class App extends Component {
     fetch(getRequest)
     .then(response => response.json())
     .then((data) => {
+      console.log(data)
+
+      // if (data.Response === 'False') {
+      //   return null
+      // }
+
       const movieData = {
         title:  data.Title,
         plot:   data.Plot,
@@ -111,6 +117,7 @@ class App extends Component {
     })
     .then(response => response.json())
     .then((data) => {
+      console.log(data)
       if (data.tracks.items.length === 0) {
         return null
       }
@@ -124,11 +131,8 @@ class App extends Component {
         albumCover: info.album.images[0].url,
         url:        info.external_urls.spotify
       }
-      this.setState({
-        songs: this.state.songs.concat(songData)
-      })
+      this.setState({songs: this.state.songs.concat(songData)})
     })
-    .catch(error => console.log(error))
   }
 
   getTopics(string) {
@@ -164,6 +168,7 @@ class App extends Component {
     }
 
     return (
+      <ErrorHandler>
       <div className="container">
 
           <div className="container-left">
@@ -175,7 +180,7 @@ class App extends Component {
               </div>}
 
             {this.state.movie &&
-              <div className="after-search-content">
+              <div className="after-welcome-content">
                 <div className="navbar">
                   <div className="navbar-left">
                     <NavHeader />
@@ -186,11 +191,12 @@ class App extends Component {
                       handleSearchSubmit={this.handleSearchSubmit} />
                   </div>
 
+                  {this.state.songs.length > 0 &&
                     <SavePlaylist
                       token={this.state.token}
                       userID={this.state.userData.id}
                       title={this.state.movie.title}
-                      songs={this.state.songs} />
+                      songs={this.state.songs} />}
                 </div>
 
                 <Poster
@@ -199,12 +205,12 @@ class App extends Component {
                   plot={this.state.movie.plot}
                   topics={this.state.topics} />
 
-                <Footer />
               </div>}
           </div>
         <Playlist
           songs={this.state.songs} />
       </div>
+      </ErrorHandler>
     )
   }
 }

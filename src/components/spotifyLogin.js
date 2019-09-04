@@ -6,7 +6,6 @@ class SpotifyLogin extends Component {
     const authEndpoint  = "https://accounts.spotify.com/authorize"
     const clientId      = process.env.REACT_APP_SPOTIFY_CLIENT_ID
     const redirectUri   = "https://plotify-music.herokuapp.com/"
-    // const scopes        = ["streaming", "user-read-currently-playing", "user-read-playback-state", "user-read-email", "user-read-private", "playlist-modify-public"]
     const scopes        = ["user-read-email", "user-read-private", "playlist-modify-public"]
     const getRequest    = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`
 

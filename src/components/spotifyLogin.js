@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './spotifyLogin.css'
 
 class SpotifyLogin extends Component {
   render() {

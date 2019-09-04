@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './search.css'
 
 class Search extends Component {
   constructor(props) {
@@ -21,14 +22,12 @@ class Search extends Component {
       <div className='search'>
         <form
           onSubmit={this.handleSubmit}>
-          <label>
-            <input
-              className='search-input'
-              type='text'
-              placeholder=" 🔍"
-              value={this.props.value}
-              onChange={this.handleChange} />
-          </label>
+          <input
+            className='search-input'
+            type='text'
+            placeholder=" 🔍"
+            value={this.props.value}
+            onChange={this.handleChange} />
         </form>
       </div>
     )

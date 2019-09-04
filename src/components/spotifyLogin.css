@@ -1,0 +1,23 @@
+.login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(250,14,40,1) 24%, rgba(233,12,36,1) 100%);
+  padding: 18px 30px;
+  width: 200px;
+  color: white;
+  font-weight: 800;
+  border-radius: 40px;
+  margin: 0 auto;
+}
+
+.login-button:hover {
+  background: rgb(250,14,40);
+  cursor: pointer;
+}
+
+a.login-button {
+  font-size: 15px;
+  text-decoration: none;
+  color: white;
+}

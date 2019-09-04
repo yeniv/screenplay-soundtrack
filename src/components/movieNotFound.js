@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import './movieNotFound.css'
 
 class MovieNotFound extends Component {
   render() {
@@ -10,9 +11,7 @@ class MovieNotFound extends Component {
       <div className='movie-not-found'>
         <img
           src="https://media.giphy.com/media/3oEdvaxcFPKdt9V5mM/giphy.gif"
-          alt=""
-          width="600"
-          height="325"/>
+          alt=""/>
       </div>
     )
   }

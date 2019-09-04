@@ -12,7 +12,7 @@ import ErrorHandler   from "./errorHandler.js"
 
 import nlp            from 'compromise'
 
-import './App.css'
+import './app.css'
 
 const hashFragment = window.location.hash
   .substring(1)

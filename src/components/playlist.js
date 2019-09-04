@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import SongPlayer from './songPlayer.js'
+import './playlist.css'
 
 class Playlist extends Component {
   render() {

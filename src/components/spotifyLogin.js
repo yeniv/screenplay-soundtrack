@@ -9,12 +9,11 @@ class SpotifyLogin extends Component {
     const getRequest    = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`
 
     return (
-      <div className='spotify-login'>
-        <a
-          href={getRequest}>
-          Login to Spotify
-        </a>
-      </div>
+      <a
+      className="login-button"
+      href={getRequest}>
+        Login to Spotify to begin
+      </a>
     )
   }
 }

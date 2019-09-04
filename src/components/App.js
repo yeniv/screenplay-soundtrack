@@ -1,15 +1,16 @@
 import React, { Component } from "react"
 
-import NavHeader    from "./navHeader.js"
-import Header       from "./header.js"
-import Search       from "./search.js"
-import Poster       from "./poster.js"
-import SavePlaylist from "./savePlaylist.js"
-import Playlist     from "./playlist.js"
-import SpotifyLogin from "./spotifyLogin.js"
-import ErrorHandler from "./errorHandler.js"
+import NavHeader      from "./navHeader.js"
+import Header         from "./header.js"
+import Search         from "./search.js"
+import Poster         from "./poster.js"
+import SavePlaylist   from "./savePlaylist.js"
+import Playlist       from "./playlist.js"
+import MovieNotFound  from "./movieNotFound.js"
+import SpotifyLogin   from "./spotifyLogin.js"
+import ErrorHandler   from "./errorHandler.js"
 
-import nlp          from 'compromise'
+import nlp            from 'compromise'
 
 import './App.css'
 
@@ -81,13 +82,9 @@ class App extends Component {
     fetch(getRequest)
     .then(response => response.json())
     .then((data) => {
-      console.log(data)
-
       if (data.Response === 'False') {
-      //   return null
-        console.log('movie not found')
+        console.log('movie not found!')
         this.setState({movieFound: false})
-
       }
 
       const movieData = {
@@ -99,7 +96,6 @@ class App extends Component {
 
       this.setState({
         movie: movieData,
-        movieFound: true
       })
 
       const topics = this.getTopics(movieData.plot)
@@ -123,7 +119,6 @@ class App extends Component {
     })
     .then(response => response.json())
     .then((data) => {
-      console.log(data)
       if (data.tracks.items.length === 0) {
         return null
       }
@@ -137,7 +132,10 @@ class App extends Component {
         albumCover: info.album.images[0].url,
         url:        info.external_urls.spotify
       }
-      this.setState({songs: this.state.songs.concat(songData)})
+      this.setState({
+        songs: this.state.songs.concat(songData),
+        movieFound: true
+      })
     })
     .catch(error => console.log(error))
   }
@@ -212,10 +210,14 @@ class App extends Component {
                   plot={this.state.movie.plot}
                   topics={this.state.topics} />
 
+                <MovieNotFound
+                  movieFound={this.state.movieFound}/>
+
               </div>}
           </div>
         <Playlist
           songs={this.state.songs} />
+
       </div>
       </ErrorHandler>
     )

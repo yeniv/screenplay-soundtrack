@@ -1,0 +1,27 @@
+.poster {
+  margin-top: 50px;
+  color: rgb(40, 40, 40);
+  text-align: center;
+  width: 640px;
+}
+
+.poster-info {
+  text-align: center;
+  padding: 20px 80px;
+}
+
+.poster-info p {
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+p span {
+  font-weight: 700;
+}
+
+.poster img {
+  width: 310px;
+  height: 450px;
+  box-shadow: 5px 5px 1px rgba(0, 0, 0, 0.3)
+}

@@ -1,4 +1,5 @@
 import React from 'react'
+import './navHeader.css'
 
 function NavHeader() {
   return (

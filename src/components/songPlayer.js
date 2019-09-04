@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './songPlayer.css'
 
 class SongPlayer extends Component {
   render() {

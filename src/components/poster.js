@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Footer from './footer.js'
+import './poster.css'
 
 class Poster extends Component {
   render() {

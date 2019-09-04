@@ -1,0 +1,23 @@
+.navbar h1 {
+  font-size: 55px;
+  font-weight: 900;
+  color: rgba(250, 14, 40, 1);
+  letter-spacing: 2px;
+  padding: 0 60px 0 30px;
+  margin: 0;
+}
+
+.navbar h1 span {
+  position: relative;
+  bottom: 3px;
+  font-size: 48px;
+  margin: 0px -8px;
+}
+
+.small-nav-title {
+  display: none;
+}
+
+.large-nav-title {
+  display: inline-block;
+}

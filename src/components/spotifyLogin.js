@@ -3,9 +3,6 @@ import './spotifyLogin.css'
 
 class SpotifyLogin extends Component {
   render() {
-    console.log(process.env.REACT_APP_SPOTIFY_CLIENT_ID)
-    console.log(process.env.REACT_APP_OMDB_API_KEY)
-
     const authEndpoint  = "https://accounts.spotify.com/authorize"
     const clientId      = process.env.REACT_APP_SPOTIFY_CLIENT_ID
     const redirectUri   = "https://plotify-music.herokuapp.com/"

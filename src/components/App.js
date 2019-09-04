@@ -73,7 +73,7 @@ class App extends Component {
   }
 
   movieSearch(search) {
-    const baseURL     = 'http://www.omdbapi.com/?t='
+    const baseURL     = 'https://www.omdbapi.com/?t='
     const searchQuery = search.replace(' ', '+')
     const plot        = 'full'
     const apiKey      = process.env.REACT_APP_OMDB_API_KEY

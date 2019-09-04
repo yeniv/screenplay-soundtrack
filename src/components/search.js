@@ -25,7 +25,7 @@ class Search extends Component {
             <input
               className='search-input'
               type='text'
-              placeholder="Enter a movie to begin"
+              placeholder="Now enter a movie..."
               value={this.props.value}
               onChange={this.handleChange} />
           </label>

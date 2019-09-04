@@ -12,7 +12,7 @@ import ErrorHandler   from "./errorHandler.js"
 
 import nlp            from 'compromise'
 
-import './app.css'
+import './App.css'
 
 const hashFragment = window.location.hash
   .substring(1)
@@ -76,7 +76,7 @@ class App extends Component {
     const baseURL     = 'http://www.omdbapi.com/?t='
     const searchQuery = search.replace(' ', '+')
     const plot        = 'full'
-    const apiKey      = 'a7198c97'
+    const apiKey      = process.env.REACT_APP_OMDB_API_KEY
     const getRequest  = `${baseURL}${searchQuery}&plot=${plot}&apikey=${apiKey}`
 
     fetch(getRequest)

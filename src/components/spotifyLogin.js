@@ -4,7 +4,7 @@ import './spotifyLogin.css'
 class SpotifyLogin extends Component {
   render() {
     const authEndpoint  = "https://accounts.spotify.com/authorize"
-    const clientId      = "dfedd5baf69f4047928423798381296f"
+    const clientId      = process.env.REACT_APP_SPOTIFY_CLIENT_ID
     const redirectUri   = "http://localhost:3000"
     const scopes        = ["streaming", "user-read-currently-playing", "user-read-playback-state", "user-read-email", "user-read-private", "playlist-modify-public"]
     const getRequest    = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join("%20")}&response_type=token&show_dialog=true`

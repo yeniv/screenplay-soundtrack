@@ -267,6 +267,10 @@ iframe {
     padding: 20px;
   }
 
+  iframe {
+    height: 80px;
+  }
+
   .navbar {
     /*height: 0px;*/
     /*padding: 50px 0;*/
@@ -286,11 +290,12 @@ iframe {
     display: none;
   }
 
-  .search-input {
+  .navbar .search-input {
     /*width: 380px;*/
     /*width: 200px;*/
     width: 100%;
   }
+
 
   .save-button {
     width: 160px;

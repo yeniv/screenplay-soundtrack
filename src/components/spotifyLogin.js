@@ -12,7 +12,7 @@ class SpotifyLogin extends Component {
       <a
       className="login-button"
       href={getRequest}>
-        Login to Spotify to begin
+        Login to Spotify
       </a>
     )
   }

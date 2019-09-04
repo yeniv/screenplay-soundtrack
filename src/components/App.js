@@ -14,8 +14,6 @@ import nlp            from 'compromise'
 
 import './App.css'
 
-console.log(process.env.REACT_APP_test_key)
-
 const hashFragment = window.location.hash
   .substring(1)
   .split("&")
@@ -78,7 +76,7 @@ class App extends Component {
     const baseURL     = 'http://www.omdbapi.com/?t='
     const searchQuery = search.replace(' ', '+')
     const plot        = 'full'
-    const apiKey      = 'a7198c97'
+    const apiKey      = process.env.REACT_APP_OMDB_API_KEY
     const getRequest  = `${baseURL}${searchQuery}&plot=${plot}&apikey=${apiKey}`
 
     fetch(getRequest)

@@ -124,7 +124,6 @@ class App extends Component {
         albumCover: info.album.images[0].url,
         url:        info.external_urls.spotify
       }
-      console.log(songData)
       this.setState({
         songs: this.state.songs.concat(songData)
       })
@@ -185,14 +184,14 @@ class App extends Component {
                       value={this.state.searchInput}
                       handleSearchChange={this.handleSearchChange}
                       handleSearchSubmit={this.handleSearchSubmit} />
-                    </div>
+                  </div>
 
                     <SavePlaylist
                       token={this.state.token}
                       userID={this.state.userData.id}
                       title={this.state.movie.title}
                       songs={this.state.songs} />
-                  </div>
+                </div>
 
                 <Poster
                   title={this.state.movie.title}
@@ -201,7 +200,7 @@ class App extends Component {
                   topics={this.state.topics} />
 
                 <Footer />
-            </div>}
+              </div>}
           </div>
         <Playlist
           songs={this.state.songs} />

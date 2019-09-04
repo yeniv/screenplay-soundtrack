@@ -6,7 +6,7 @@ class Header extends Component {
       <div className='header'>
         <div>
           <h1>PL<span>🍿</span>TIFY</h1>
-          <h3>Create Spotify playlists from movie plots</h3>
+          <h3>Spotify playlists from movie plots</h3>
         </div>
       </div>
     )

@@ -124,7 +124,6 @@ class App extends Component {
         albumCover: info.album.images[0].url,
         url:        info.external_urls.spotify
       }
-      console.log(songData)
       this.setState({
         songs: this.state.songs.concat(songData)
       })

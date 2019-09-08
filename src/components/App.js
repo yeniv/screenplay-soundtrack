@@ -36,11 +36,11 @@ class App extends Component {
     this.getSpotifyUserData = this.getSpotifyUserData.bind(this)
     this.state = {
       token:        null,
-      searchInput:  "",
+      searchInput:  '',
       songs:        [],
       movie:        null,
       userData:     null,
-      movieFound:   false
+      movieFound:   false,
     }
   }
 
@@ -169,7 +169,7 @@ class App extends Component {
                   handleSearchChange={this.handleSearchChange}
                   handleSearchSubmit={this.handleSearchSubmit} />
     } else {
-      greeting = <SpotifyLogin />
+      greeting = <SpotifyLogin origin={this.state.origin}/>
     }
 
     return (

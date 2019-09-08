@@ -196,7 +196,7 @@ class App extends Component {
                       handleSearchSubmit={this.handleSearchSubmit} />
                   </div>
 
-                  {this.state.songs.length > 0 &&
+                  {(this.state.songs.length > 0 && this.state.userData) &&
                     <SavePlaylist
                       token={this.state.token}
                       userID={this.state.userData.id}

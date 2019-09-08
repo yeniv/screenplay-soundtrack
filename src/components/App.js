@@ -65,7 +65,6 @@ class App extends Component {
       const userData = {
         id: data.id,
         displayName: data.display_name,
-        image: data.images[0].url
       }
       this.setState({userData: userData})
       console.log(userData)
@@ -197,7 +196,7 @@ class App extends Component {
                       handleSearchSubmit={this.handleSearchSubmit} />
                   </div>
 
-                  {(this.state.songs.length > 0 && this.state.userData) &&
+                  {this.state.songs.length > 0 &&
                     <SavePlaylist
                       token={this.state.token}
                       userID={this.state.userData.id}

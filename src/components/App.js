@@ -68,6 +68,7 @@ class App extends Component {
         image: data.images[0].url
       }
       this.setState({userData: userData})
+      console.log(userData)
     })
     .catch(error => console.log(error))
   }

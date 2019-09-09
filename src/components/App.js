@@ -8,6 +8,7 @@ import SavePlaylist   from "./save-playlist.js"
 import Playlist       from "./playlist.js"
 import MovieNotFound  from "./movieNotFound.js"
 import SpotifyLogin   from "./spotifyLogin.js"
+import LogoutButton   from "./logout_button.js"
 import ErrorHandler   from "./errorHandler.js"
 
 import nlp            from 'compromise'
@@ -34,6 +35,7 @@ class App extends Component {
     this.movieSearch        = this.movieSearch.bind(this)
     this.removeDuplicates   = this.removeDuplicates.bind(this)
     this.getSpotifyUserData = this.getSpotifyUserData.bind(this)
+    this.logout = this.logout.bind(this)
     this.state = {
       token:        null,
       searchInput:  '',
@@ -151,6 +153,15 @@ class App extends Component {
     })
   }
 
+  logout() {
+    this.setState({
+      token: null,
+      movie: null,
+      songs: []
+    })
+    window.location.href = window.location.origin
+  }
+
   handleSearchChange(input) {
     this.setState({searchInput: input})
   }
@@ -208,6 +219,9 @@ class App extends Component {
                   poster={this.state.movie.poster}
                   plot={this.state.movie.plot}
                   topics={this.state.topics} />
+
+                <LogoutButton
+                  handleClick={this.logout}/>
 
                 <MovieNotFound
                   movieFound={this.state.movieFound}/>

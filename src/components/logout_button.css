@@ -1,0 +1,38 @@
+.logout-button {
+  display: flex;
+  align-items: center;
+  background: rgb(245, 245, 245);
+  border: 2px solid rgb(250,14,40);
+  color: rgb(250,14,40);
+  justify-content: center;
+  padding: 14px 26px;
+  width: 200px;
+  border-radius: 40px;
+  margin: 0 auto;
+  font-size: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 20px;
+  outline: none;
+}
+
+.logout-button:hover {
+  background: rgb(250,14,40);
+  color: white;
+  cursor: pointer;
+}
+
+/*.save-button-clicked {
+  background: linear-gradient(180deg, rgba(250,14,40,1) 24%, rgba(233,12,36,1) 100%);
+  background: rgb(245, 245, 245);
+  border: 2px solid rgb(250,14,40);
+  color: rgb(250,14,40);
+}
+
+.save-button-clicked:hover {
+  background: rgb(245, 245, 245);
+  border: 2px solid rgb(250,14,40);
+  color: rgb(250,14,40);
+  cursor: default;
+}*/

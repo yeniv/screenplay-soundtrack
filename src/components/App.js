@@ -67,7 +67,6 @@ class App extends Component {
         displayName: data.display_name,
       }
       this.setState({userData: userData})
-      console.log(userData)
     })
     .catch(error => console.log(error))
   }

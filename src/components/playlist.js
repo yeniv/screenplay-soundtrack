@@ -8,7 +8,7 @@ class Playlist extends Component {
       <div className='playlist'>
         {
           this.props.songs.map((song, index) => {
-            return <SongPlayer value={song} key={index}/>
+            return <SongPlayer value={song} key={index} />
           })
         }
       </div>

@@ -18,4 +18,16 @@
   cursor: pointer;
 }
 
+.save-button-clicked {
+  /*background: linear-gradient(180deg, rgba(250,14,40,1) 24%, rgba(233,12,36,1) 100%);*/
+  background: rgb(245, 245, 245);
+  border: 2px solid rgb(250,14,40);
+  color: rgb(250,14,40);
+}
 
+.save-button-clicked:hover {
+  background: rgb(245, 245, 245);
+  border: 2px solid rgb(250,14,40);
+  color: rgb(250,14,40);
+  cursor: default;
+}

@@ -67,13 +67,21 @@ class SavePlaylist extends Component {
   }
 
   render() {
-    return (
-      <button
-        className="save-button"
-        onClick={this.createPlaylist}>
-        Save<span className="playlist-text-in-save-button"> playlist</span> to Spotify
-      </button>
-    )
+    if (this.state.playlistCreated) {
+      return (
+        <button
+          className="save-button save-button-clicked">
+          Check your Spotify
+        </button>
+      )
+    } else {
+      return (
+        <button
+          className="save-button"
+          onClick={this.createPlaylist}>
+          Save<span className="playlist-text-in-save-button"> playlist</span> to Spotify
+        </button>
+      )}
   }
 }
 

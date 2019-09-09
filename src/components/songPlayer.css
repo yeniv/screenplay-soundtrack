@@ -1,4 +1,29 @@
+.song-player {
+  position: relative;
+}
+
+.song-player-checkbox {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  height: 25px;
+  width: 100%;
+  background-color: rgb(250,14,40);
+  z-index: 2;
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.song-player-checkbox input {
+  outline: none;
+  margin-left: 10px;
+}
+
 iframe {
+  /*display: none;*/
+  z-index: 1;
   flex: 1;
   flex-basis: 1;
   height: 340px;

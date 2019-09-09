@@ -35,15 +35,16 @@ class App extends Component {
     this.movieSearch        = this.movieSearch.bind(this)
     this.removeDuplicates   = this.removeDuplicates.bind(this)
     this.getSpotifyUserData = this.getSpotifyUserData.bind(this)
-    this.logout = this.logout.bind(this)
+    this.logout             = this.logout.bind(this)
+    this.vetoSong           = this.vetoSong.bind(this)
     this.state = {
-      token:          null,
-      searchInput:    '',
-      songs:          [],
-      selectedSongs:  [],
-      movie:          null,
-      userData:       null,
-      movieFound:     false
+      token:         null,
+      searchInput:   '',
+      songs:         [],
+      vetoSongs:     [],
+      movie:         null,
+      userData:      null,
+      movieFound:    false
     }
   }
 
@@ -156,11 +157,23 @@ class App extends Component {
 
   logout() {
     this.setState({
-      token: null,
-      movie: null,
-      songs: []
+      token:      null,
+      movie:      null,
+      songs:      [],
+      vetoSongs:  []
     })
     window.location.href = window.location.origin
+  }
+
+  vetoSong(checked, uri) {
+    if (checked) {
+      this.setState({vetoSongs: this.state.vetoSongs.concat(uri)})
+    } else {
+      const uriLocation = this.state.vetoSongs.indexOf(uri);
+      this.setState({
+        veroSongs: this.state.vetoSongs.splice(uriLocation, uriLocation + 1)
+      })
+    }
   }
 
   handleSearchChange(input) {
@@ -168,7 +181,10 @@ class App extends Component {
   }
 
   handleSearchSubmit() {
-    this.setState({songs: []})
+    this.setState({
+      songs:      [],
+      vetoSongs:  []
+    })
     this.movieSearch(this.state.searchInput)
   }
 
@@ -212,7 +228,8 @@ class App extends Component {
                       token={this.state.token}
                       userID={this.state.userData.id}
                       title={this.state.movie.title}
-                      songs={this.state.songs} />}
+                      songs={this.state.songs}
+                      vetoSongs={this.state.vetoSongs} />}
                 </div>
 
                 <Poster
@@ -230,7 +247,8 @@ class App extends Component {
               </div>}
           </div>
         <Playlist
-          songs={this.state.songs} />
+          songs={this.state.songs}
+          handleClick={this.vetoSong} />
 
       </div>
       </ErrorHandler>

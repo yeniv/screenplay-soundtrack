@@ -61,9 +61,14 @@ class SavePlaylist extends Component {
   }
 
   getPlaylistURIS() {
-    return this.props.songs.map((song) => {
+    const songURIS = this.props.songs.map((song) => {
       return song.uri
     })
+    this.props.vetoSongs.forEach((vetoSong) => {
+      const vetoSongLocation = songURIS.indexOf(vetoSong)
+      songURIS.splice(vetoSongLocation, vetoSongLocation + 1)
+    })
+    return songURIS
   }
 
   render() {

@@ -37,12 +37,13 @@ class App extends Component {
     this.getSpotifyUserData = this.getSpotifyUserData.bind(this)
     this.logout = this.logout.bind(this)
     this.state = {
-      token:        null,
-      searchInput:  '',
-      songs:        [],
-      movie:        null,
-      userData:     null,
-      movieFound:   false,
+      token:          null,
+      searchInput:    '',
+      songs:          [],
+      selectedSongs:  [],
+      movie:          null,
+      userData:       null,
+      movieFound:     false
     }
   }
 

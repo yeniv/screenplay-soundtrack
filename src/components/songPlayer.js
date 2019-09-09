@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './songPlayer.css'
 
 class SongPlayer extends Component {
+  state = { loading: true }
+
   render() {
     return (
       <iframe

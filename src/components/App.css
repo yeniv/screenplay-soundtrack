@@ -112,6 +112,10 @@ body {
     display: none;
   }
 
+  .logout-button {
+    margin-bottom: 20px;
+  }
+
   .playlist-text-in-save-button {
     display: none;
   }

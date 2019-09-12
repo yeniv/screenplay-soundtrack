@@ -36,7 +36,8 @@ class App extends Component {
     this.movieSearch        = this.movieSearch.bind(this)
     this.removeDuplicates   = this.removeDuplicates.bind(this)
     this.getSpotifyUserData = this.getSpotifyUserData.bind(this)
-    this.logout = this.logout.bind(this)
+    this.clearSearch        = this.clearSearch.bind(this)
+    this.logout             = this.logout.bind(this)
     this.state = {
       token:        null,
       searchInput:  '',
@@ -154,6 +155,15 @@ class App extends Component {
     })
   }
 
+  clearSearch() {
+    this.setState({
+      movie: null,
+      songs: [],
+      movieFound: false,
+      searchInput: ''
+    })
+  }
+
   logout() {
     this.setState({
       token: null,
@@ -199,7 +209,8 @@ class App extends Component {
               <div className="after-welcome-content">
                 <div className="navbar">
                   <div className="navbar-left">
-                    <NavHeader />
+                    <NavHeader
+                      handleClick={this.clearSearch}/>
 
                     <Search
                       value={this.state.searchInput}
@@ -221,12 +232,13 @@ class App extends Component {
                   plot={this.state.movie.plot}
                   topics={this.state.topics} />
 
+                {this.state.movieFound &&
                 <div className="hide-on-mobile">
                   <LogoutButton
                     handleClick={this.logout}/>
 
                   <Footer />
-                </div>
+                </div>}
 
                 <MovieNotFound
                   movieFound={this.state.movieFound}/>

@@ -71,7 +71,7 @@ class SavePlaylist extends Component {
       return (
         <button
           className="save-button save-button-clicked">
-          Check your Spotify
+          Saved! Check Spotify
         </button>
       )
     } else {

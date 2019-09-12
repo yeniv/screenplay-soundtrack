@@ -9,6 +9,7 @@ import Playlist       from "./playlist.js"
 import MovieNotFound  from "./movieNotFound.js"
 import SpotifyLogin   from "./spotifyLogin.js"
 import LogoutButton   from "./logout_button.js"
+import Footer         from './footer.js'
 import ErrorHandler   from "./errorHandler.js"
 
 import nlp            from 'compromise'
@@ -222,6 +223,8 @@ class App extends Component {
 
                 <LogoutButton
                   handleClick={this.logout}/>
+
+                <Footer />
 
                 <MovieNotFound
                   movieFound={this.state.movieFound}/>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Footer from './footer.js'
 import './poster.css'
 
 class Poster extends Component {
@@ -17,7 +16,6 @@ class Poster extends Component {
             <p>{this.props.plot}</p>
           </div>
         </div>
-        <Footer />
       </div>
     )
   }

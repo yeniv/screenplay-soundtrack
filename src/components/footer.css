@@ -1,6 +1,10 @@
 .footer{
+  width: 100%;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  padding: 10px 0;
 }
 
 .footer p {
@@ -8,14 +12,15 @@
   font-size: 14px;
   display: inline-block;
   color: rgb(55, 55, 55);
-  font-weight: 400;
+  font-weight: 700;
   padding: 8px 16px;
   border-radius: 30px;
-  /*border: 1px solid rgb(250, 14, 40);*/
 }
 
 .footer a {
   text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
   color: rgba(233,12,36,1);
   transition: all 0.4s ease;
 }

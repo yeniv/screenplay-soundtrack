@@ -19,6 +19,13 @@ body {
   padding-bottom: 19vh
 }
 
+.after-welcome-content {
+  /*background-color: red;*/
+  /*flex-grow: 1;*/
+  height: 100%;
+  position: relative;
+}
+
 .navbar {
   z-index: 10;
   display: flex;

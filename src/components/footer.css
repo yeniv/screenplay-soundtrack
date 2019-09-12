@@ -1,26 +1,36 @@
-.footer{
+.footer-main {
   width: 100%;
   display: flex;
   justify-content: center;
   position: absolute;
   bottom: 0;
   padding: 10px 0;
+  text-align: center;
+}
+
+.footer-mobile {
+  display: none;
+  width: 100%;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  padding: 10px 0;
+  text-align: center;
 }
 
 .footer p {
   /*background-color: red;*/
   font-size: 14px;
-  display: inline-block;
+  /*display: inline-block;*/
   color: rgb(55, 55, 55);
-  font-weight: 700;
+  font-weight: 600;
   padding: 8px 16px;
   border-radius: 30px;
 }
 
 .footer a {
   text-decoration: none;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-weight: 600;
+  /*text-transform: uppercase;*/
   color: rgba(233,12,36,1);
   transition: all 0.4s ease;
 }

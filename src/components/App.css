@@ -20,8 +20,6 @@ body {
 }
 
 .after-welcome-content {
-  /*background-color: red;*/
-  /*flex-grow: 1;*/
   height: 100%;
   position: relative;
 }
@@ -110,7 +108,15 @@ body {
     margin-left: -50px;
   }
 
+  .hide-on-mobile {
+    display: none;
+  }
+
   .playlist-text-in-save-button {
     display: none;
+  }
+
+  .footer-mobile {
+    display: inline-block;
   }
 }

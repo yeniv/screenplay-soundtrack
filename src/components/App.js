@@ -221,10 +221,12 @@ class App extends Component {
                   plot={this.state.movie.plot}
                   topics={this.state.topics} />
 
-                <LogoutButton
-                  handleClick={this.logout}/>
+                <div className="hide-on-mobile">
+                  <LogoutButton
+                    handleClick={this.logout}/>
 
-                <Footer />
+                  <Footer />
+                </div>
 
                 <MovieNotFound
                   movieFound={this.state.movieFound}/>
@@ -232,7 +234,9 @@ class App extends Component {
               </div>}
           </div>
         <Playlist
-          songs={this.state.songs} />
+          songs={this.state.songs}
+          movieFound={this.state.movieFound}
+          handleClick={this.logout} />
 
       </div>
       </ErrorHandler>

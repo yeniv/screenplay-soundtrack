@@ -14,6 +14,10 @@
   margin: 0px -8px;
 }
 
+.nav-title {
+  cursor: pointer;
+}
+
 .small-nav-title {
   display: none;
 }

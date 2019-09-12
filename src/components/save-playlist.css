@@ -1,4 +1,5 @@
 .save-button {
+  z-index: 10;
   background: linear-gradient(180deg, rgba(250,14,40,1) 24%, rgba(233,12,36,1) 100%);
   height: 50px;
   padding: 8px 25px;
